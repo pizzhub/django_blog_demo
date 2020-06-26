@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="form-signin" method="post">{% csrf_token %}
+    <h2 class="h3 mb-3 font-weight-normal">Account</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address"  value="{{ account_form.initial.email }}" required autofocus>
+    
+	<label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required value="{{ account_form.initial.username }}">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Save changes</button>
+	
+	{% for field in account_form %}
+	<div>
+		{% for error in field.errors %}
+		<p class="alert alert-danger">{{ error }}</p>
+		{% endfor %}
+	</div>
+	{% endfor %}
+	{% if account_form.non_field_errors %}
+		<div class="text-danger">
+			<p>{{ account_form.non_field_errors }}</p>
+		</div>
+	{% endif %}
+	{% if success_message %}
+		<div class="text-success">
+			<p>{{ success_message }}</p>
+		</div>
+	{% endif %}
+</form>
+
+<div class="d-flex flex-column">
+	<a class="m-auto" href="{% url 'password_change' %}">Change password</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+	<div class="d-flex flex-column">
+		<h3>Content</h3>
+		{% for value in accounts %}
+			{% include 'personal/snippets/body_snippet.html' with value=value %}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

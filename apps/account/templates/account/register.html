@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="form-signin" method="post">{% csrf_token %}
+    <h2 class="h3 mb-3 font-weight-normal">Register</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    
+	<label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
+	
+	<label for="inputPassword1" class="sr-only">Password</label>
+    <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
+	
+	<label for="inputPassword2" class="sr-only">Password Confirm</label>
+    <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Password Confirm" required>
+    
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+	
+	{% for field in registration_form %}
+	<div>
+		{% for error in field.errors %}
+		<p class="text-danger">{{ error }}</p>
+		{% endfor %}
+	</div>
+	{% endfor %}
+	{% if register_form.non_field_errors %}
+		<div class="text-danger">
+			<p>{{ register_form.non_field_errors }}</p>
+		</div>
+	{% endif %}
+	
+</form>
+
+{% endblock %}
