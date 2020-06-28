@@ -14,18 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from apps.personal import views as personal
 from apps.account import views as account
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('blog/', include('apps.blog.urls', 'blog')),
     path('', personal.home, name="home"),
     path('register/', account.registration_view, name="register"),
     path('login/', account.login_view, name="login"),
     path('logout/', account.logout_view, name="logout"),
     path('account/', account.account_view, name="account"),
+    path('must_authenticate/', account.must_authenticate_view, name="must_authenticate"),
 
     # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     path('password_change/done/',
@@ -46,3 +50,8 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
          name='password_reset_complete'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
