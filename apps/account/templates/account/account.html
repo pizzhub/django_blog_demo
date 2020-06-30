@@ -34,4 +34,25 @@
 	<a class="m-auto" href="{% url 'password_change' %}">Change password</a>
 </div>
 
+<div class="container">
+	<div class="row">
+		<div class="blog-posts mt-4 p-4">
+			<h3 class="mb-3 font-weight-moral">Blog posts:</h3>
+			{% if blog_posts %}
+			<ul>
+				{% for post in blog_posts %}
+				<li class="list-group-item">
+					<a href="{% url 'blog:detail_blog' post.slug %}">{{ post }}</a>
+					<hr>
+					<a href="{% url 'blog:edit_blog' post.slug %}" class="btn btn-primary">Edit</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% else %}
+				<p>You have no blog posts, Create a post <a href="{% url 'blog:create' %}">here</a></p>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
 {% endblock %}

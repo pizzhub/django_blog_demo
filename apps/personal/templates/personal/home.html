@@ -44,7 +44,16 @@
 
 		<!-- blog feed -->
 		<div class="left-column col-lg-7 offset-lg-1">
-		
+			<div class="blog-posts mt-4 p-4">
+				<h3 class="mb-3 font-weight-moral">Blog posts:</h3>
+				{% if blog_posts %}
+					{% for post in blog_posts %}
+						{% include 'personal/snippets/body_snippet.html' with post=post %}
+					{% endfor %}
+				{% else %}
+					<p>You have no blog posts, Create a post <a href="{% url 'blog:create' %}">here</a></p>
+				{% endif %}
+			</div>
 		</div>
 		<!-- end blog feed -->
 

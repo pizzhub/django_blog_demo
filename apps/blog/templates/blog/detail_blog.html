@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style type="text/css">
+  .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+
+  	.submit-button{
+  		max-width: 200px;
+  	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="card m-auto">
+			<img class="card-img-top" src="{{ blog_post.image.url }}" alt="">
+			<div class="card-body my-2">
+				<h2 class="card-title">{{ blog_post.title }}</h2>
+				<p class="card-text">{{ blog_post.body|safe }}</p>
+				{% if blog_post.author == request.user %}
+				<a href="{% url 'blog:edit_blog' blog_post.slug %}" class="btn btn-primary">Edit</a>
+				{% endif %}
+			</div>
+			<div class="card-footer text-muted">
+				Update on {{ blog_post.date_updated }} by {{blog_post.author}}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

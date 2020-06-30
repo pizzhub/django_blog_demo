@@ -1,3 +1,13 @@
-<div>
-	<h3>{{ value }} || {{ value.date_joined }}</h3>
+<div class="card m-auto">
+	<img class="card-img-top" src="{{ post.image.url }}" alt="">
+	<div class="card-body my-2">
+		<h2 class="card-title">{{ post.title }}</h2>
+		<p class="card-text">{{ post.body|safe|truncatechars:250 }}</p>
+		{% if post.author == request.user %}
+		<a href="{% url 'blog:edit_blog' post.slug %}" class="btn btn-primary">Edit</a>
+		{% endif %}
+	</div>
+	<div class="card-footer text-muted">
+		Update on {{ post.date_updated }} by {{post.author}}
+	</div>
 </div>

@@ -2,8 +2,8 @@
 *~
 /.vscode
 __pycache__
-myvenv
+venv
 env
 db.sqlite3
-/static
+/static/admin
 .DS_Store
