@@ -1,9 +1,26 @@
-*.pyc
-*~
-/.vscode
-__pycache__
-venv
-env
-db.sqlite3
-/static/admin
+# Created by https://www.gitignore.io
+
+### OSX ###
 .DS_Store
+.AppleDouble
+.LSOverride
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+/config/__pycache__/*.pyc
+/config/base_settings.py
+/media/*
+/static/admin/
+/static/admin/*
+/env
+/venv
+.idea
+*.sqlite3
+
+# django migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py

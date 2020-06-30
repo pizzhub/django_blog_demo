@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 
 from apps.blog.models import BlogPost
 from apps.blog.forms import CreateBlogPostForm, UpdateBlogPostForm
@@ -59,4 +60,19 @@ def edit_blog_view(request, slug):
     context['form'] = form
 
     return render(request, 'blog/edit_blog.html', context)
+
+
+def get_blog_queryset(query=None):
+    queryset = []
+    queries = query.split(" ")  # python tutorial 2020 = [python, tutorial, 2020]
+    for q in queries:
+        posts = BlogPost.objects.filter(
+            Q(title__icontains=q),
+            Q(body__icontains=q)
+        ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+    return list(set(queryset))
 

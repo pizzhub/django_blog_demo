@@ -61,18 +61,16 @@
 		{% block styles %}{% endblock styles %}
 	</head>
 	<body>
+		<!-- Header -->
+		{% include 'partials/header.html' %}
 		<div class="wrapper">
-			<!-- Header -->
-			{% include 'partials/header.html' %}
-			
 			<!-- Content -->
 			<div id="main" class="container">
 				{% block content %}{% endblock %}
 			</div>
-			
-			<!-- Footer -->
-			{% include 'partials/footer.html' %}
 		</div>
+		<!-- Footer -->
+		{% include 'partials/footer.html' %}
 		
 		<!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

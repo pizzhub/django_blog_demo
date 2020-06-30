@@ -51,7 +51,7 @@
 						{% include 'personal/snippets/body_snippet.html' with post=post %}
 					{% endfor %}
 				{% else %}
-					<p>You have no blog posts, Create a post <a href="{% url 'blog:create' %}">here</a></p>
+					<p>There are no results matching your search: {{ query }}</p>
 				{% endif %}
 			</div>
 		</div>
