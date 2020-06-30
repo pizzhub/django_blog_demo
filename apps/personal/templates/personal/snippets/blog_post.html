@@ -1,7 +1,9 @@
 <div class="card m-auto">
 	<img class="card-img-top" src="{{ post.image.url }}" alt="">
 	<div class="card-body my-2">
-		<h2 class="card-title">{{ post.title }}</h2>
+		<h2 class="card-title">
+			<a href="{% url 'blog:detail_blog' post.slug %}">{{ post.title }}</a>
+		</h2>
 		<p class="card-text">{{ post.body|safe|truncatechars:250 }}</p>
 		{% if post.author == request.user %}
 		<a href="{% url 'blog:edit_blog' post.slug %}" class="btn btn-primary">Edit</a>
