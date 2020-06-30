@@ -48,15 +48,17 @@
 				<h3 class="mb-3 font-weight-moral">Blog posts:</h3>
 				{% if blog_posts %}
 					{% for post in blog_posts %}
-						{% include 'personal/snippets/body_snippet.html' with post=post %}
+						{% include 'personal/snippets/blog_post.html' with post=post %}
 					{% endfor %}
 				{% else %}
 					<p>There are no results matching your search: {{ query }}</p>
 				{% endif %}
 			</div>
+			<!-- Pagination -->
+			{% include 'pagination.html' with queries=blog_posts %}
 		</div>
 		<!-- end blog feed -->
-
+		
 		<!-- Right 'create post' column  -->
 		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
 
