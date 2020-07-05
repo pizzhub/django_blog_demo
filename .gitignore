@@ -10,7 +10,7 @@
 *.pot
 *.pyc
 __pycache__/
-/config/__pycache__/*.pyc
+/config/__pycache__/*
 /config/base_settings.py
 /media/*
 /static/admin/
