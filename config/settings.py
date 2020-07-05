@@ -33,12 +33,15 @@ if DEBUG:
 # Application definition
 
 INSTALLED_APPS = [
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    # My apps
     'apps.personal',
     'apps.account',
     'apps.blog',
